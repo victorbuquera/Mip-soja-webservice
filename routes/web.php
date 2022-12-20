@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/teste', function(){
+    $dataAtual = Carbon::now();
+
+    return [
+        'ping' => 'pong',
+        'data' => $dataAtual->toDateString()
+    ];
 });

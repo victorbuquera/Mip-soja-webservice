@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class   UserController extends Controller
 {
     public function index(Request $request)
     {
@@ -46,6 +46,7 @@ class UserController extends Controller
                 'token'=>$token
             ]);
         }
+        //dada
 
         return response()->json([
             'message'=> 'Dados fornecedios invalidos'

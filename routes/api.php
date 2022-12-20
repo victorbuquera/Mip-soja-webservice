@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/login', [UserController::class,'login']);
 Route::post('/register', [UserController::class,'register']);
 
+
 Route::middleware(['auth:api'])->group(function (){
     Route::get('/user', [UserController::class,'index']);
     Route::post('/logout', [UserController::class,'logout']);
 });
+
