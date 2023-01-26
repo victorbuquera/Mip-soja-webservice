@@ -16,15 +16,23 @@ class   UserController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name'=>'required',
+            'nome'=>'required',
             'email'=>'required|email|unique:users',
-            'password'=>'required|confirmed'
+            'cel'=>'required|unique:users',
+            'senha'=>'required|confirmed',
+            'profissao' => 'required'
         ]);
 
         $result = User::create([
-            'name'=>$request->name,
+            'nome'=>$request->nome,
             'email'=>$request->email,
-            'password'=>bcrypt($request->password)
+            'cel'=>$request->cel,
+            'senha'=>bcrypt($request->senha),
+            'profissao'=>$request->profissao,
+            'comoConheceuApp'=>$request->comoConheceuApp,
+            'finalidadeUso'=>$request->finalidadeUso,
+            'cidade'=>$request->cidade,
+            'estado'=>$request->estado
         ]);
         return $result;
     }
