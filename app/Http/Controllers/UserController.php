@@ -20,7 +20,11 @@ class   UserController extends Controller
             'email'=>'required|email|unique:users',
             'cel'=>'required|unique:users',
             'senha'=>'required|confirmed',
-            'profissao' => 'required'
+            'cidade'=>'required',
+            'estado' => 'required',
+            'profissao' => 'required',
+            'comoConheceuApp' => 'nullable',
+            'finalidadeUso' => 'nullable'
         ]);
 
         $result = User::create([
@@ -28,11 +32,11 @@ class   UserController extends Controller
             'email'=>$request->email,
             'cel'=>$request->cel,
             'senha'=>bcrypt($request->senha),
+            'cidade'=>$request->cidade,
+            'estado'=>$request->estado,
             'profissao'=>$request->profissao,
             'comoConheceuApp'=>$request->comoConheceuApp,
-            'finalidadeUso'=>$request->finalidadeUso,
-            'cidade'=>$request->cidade,
-            'estado'=>$request->estado
+            'finalidadeUso'=>$request->finalidadeUso
         ]);
         return $result;
     }
