@@ -17,6 +17,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'nome',
+        'sobreNome',
         'profissao',
         'comoConheceuApp',
         'finalidadeUso',
@@ -24,7 +25,7 @@ class User extends Authenticatable
         'estado',
         'email',
         'cel',
-        'senha',
+        'password',
     ];
 
     use HasApiTokens, HasFactory, Notifiable;
@@ -35,7 +36,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'senha',
+        'password',
         'remember_token',
         'api_token',
     ];

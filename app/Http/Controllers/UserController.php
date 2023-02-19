@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Log;
 class   UserController extends Controller
 {
     public function index(Request $request)
@@ -17,9 +17,10 @@ class   UserController extends Controller
     {
         $request->validate([
             'nome'=>'required',
+            'sobreNome'=>'required',
             'email'=>'required|email|unique:users',
             'cel'=>'required|unique:users',
-            'senha'=>'required|confirmed',
+            'password'=>'required|confirmed',
             'cidade'=>'required',
             'estado' => 'required',
             'profissao' => 'required',
@@ -29,9 +30,10 @@ class   UserController extends Controller
 
         $result = User::create([
             'nome'=>$request->nome,
+            'sobreNome'=>$request->sobreNome,
             'email'=>$request->email,
             'cel'=>$request->cel,
-            'senha'=>bcrypt($request->senha),
+            'password'=>bcrypt($request->password),
             'cidade'=>$request->cidade,
             'estado'=>$request->estado,
             'profissao'=>$request->profissao,
@@ -44,21 +46,22 @@ class   UserController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email'=>'required|email',
+            'email'=>'required',
             'password'=>'required'
         ]);
+        Log::debug("credenciais " . json_encode($credentials));
 
         if(Auth::attempt($credentials) ){
             $user = Auth::user();
             $token = md5( time() ).'.'.md5($request->email);
             $user->forceFill([
                 'api_token'=>$token
+                //descobrir como colocar uma duração de tempo nesse token
             ])->save();
             return response()->json([
                 'token'=>$token
             ]);
         }
-        //dada
 
         return response()->json([
             'message'=> 'Dados fornecedios invalidos'
