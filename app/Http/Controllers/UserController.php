@@ -64,7 +64,7 @@ class   UserController extends Controller
         }
 
         return response()->json([
-            'message'=> 'Dados fornecedios invalidos'
+            'message'=> 'Dados fornecidos invalidos'
         ]);
     }
 
