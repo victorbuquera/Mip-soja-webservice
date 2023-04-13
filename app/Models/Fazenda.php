@@ -7,17 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Fazenda extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'nome',
         'cidade',
         'estado',
-        'tamanho',
-        'id_usuario'
-        ];
+        'user_id'
+    ];
 
-    public function user ()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
-    use HasFactory;
+
+    public function talhoes()
+    {
+        return $this->hasMany(Talhao::class);
+    }
 }

@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('fazendas', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->string('cidade');
+            $table->string('estado');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -522,7 +522,6 @@ class ComposerStaticInit946e4555fcd1d7f3fec2a93fe4f970ba
         'App\\Models\\Fazenda' => __DIR__ . '/../..' . '/app/Models/Fazenda.php',
         'App\\Models\\Talhao' => __DIR__ . '/../..' . '/app/Models/Talhao.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
-        'App\\Models\\UsuarioFazenda' => __DIR__ . '/../..' . '/app/Models/UsuarioFazenda.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

@@ -23,7 +23,6 @@ return array(
     'App\\Models\\Fazenda' => $baseDir . '/app/Models/Fazenda.php',
     'App\\Models\\Talhao' => $baseDir . '/app/Models/Talhao.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
-    'App\\Models\\UsuarioFazenda' => $baseDir . '/app/Models/UsuarioFazenda.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

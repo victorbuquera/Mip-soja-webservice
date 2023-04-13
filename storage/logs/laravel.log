@@ -14087,3 +14087,792 @@ DETAIL:  Failing row contains (1, victor, null, victor@gmail.com, 3131313131, pr
 [2023-02-19 08:33:59] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"12"}  
 [2023-02-19 08:35:08] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
 [2023-02-19 08:57:11] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"12"}  
+[2023-02-21 21:15:06] local.ERROR: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "users" does not exist
+LINE 1: select count(*) as aggregate from "users" where "email" = $1
+                                          ^ (SQL: select count(*) as aggregate from "users" where "email" = victor@gmail.com) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42P01): SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"users\" does not exist
+LINE 1: select count(*) as aggregate from \"users\" where \"email\" = $1
+                                          ^ (SQL: select count(*) as aggregate from \"users\" where \"email\" = victor@gmail.com) at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:760)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(422): Illuminate\\Database\\Connection->run()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2650): Illuminate\\Database\\Connection->select()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2638): Illuminate\\Database\\Query\\Builder->runSelect()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3174): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2639): Illuminate\\Database\\Query\\Builder->onceWithColumns()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3101): Illuminate\\Database\\Query\\Builder->get()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3029): Illuminate\\Database\\Query\\Builder->aggregate()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/DatabasePresenceVerifier.php(54): Illuminate\\Database\\Query\\Builder->count()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Concerns/ValidatesAttributes.php(863): Illuminate\\Validation\\DatabasePresenceVerifier->getCount()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(611): Illuminate\\Validation\\Validator->validateUnique()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(417): Illuminate\\Validation\\Validator->validateAttribute()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(448): Illuminate\\Validation\\Validator->passes()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(490): Illuminate\\Validation\\Validator->fails()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Providers/FoundationServiceProvider.php(123): Illuminate\\Validation\\Validator->validate()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/Macroable/Traits/Macroable.php(124): Illuminate\\Http\\Request->Illuminate\\Foundation\\Providers\\{closure}()
+#16 /var/www/html/app/Http/Controllers/UserController.php(19): Illuminate\\Http\\Request->__call()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\UserController->register()
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(43): Illuminate\\Routing\\Controller->callAction()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(260): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(725): Illuminate\\Routing\\Route->run()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(126): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(102): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(54): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(726): Illuminate\\Pipeline\\Pipeline->then()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(703): Illuminate\\Routing\\Router->runRouteWithinStack()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(667): Illuminate\\Routing\\Router->runRoute()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(656): Illuminate\\Routing\\Router->dispatchToRoute()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(190): Illuminate\\Routing\\Router->dispatch()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#42 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#44 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#45 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#46 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#47 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#48 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#49 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#50 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#51 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then()
+#52 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#53 /var/www/html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#54 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
+#55 {main}
+
+[previous exception] [object] (PDOException(code: 42P01): SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"users\" does not exist
+LINE 1: select count(*) as aggregate from \"users\" where \"email\" = $1
+                                          ^ at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:419)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(419): PDOStatement->execute()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(753): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(422): Illuminate\\Database\\Connection->run()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2650): Illuminate\\Database\\Connection->select()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2638): Illuminate\\Database\\Query\\Builder->runSelect()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3174): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2639): Illuminate\\Database\\Query\\Builder->onceWithColumns()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3101): Illuminate\\Database\\Query\\Builder->get()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3029): Illuminate\\Database\\Query\\Builder->aggregate()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/DatabasePresenceVerifier.php(54): Illuminate\\Database\\Query\\Builder->count()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Concerns/ValidatesAttributes.php(863): Illuminate\\Validation\\DatabasePresenceVerifier->getCount()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(611): Illuminate\\Validation\\Validator->validateUnique()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(417): Illuminate\\Validation\\Validator->validateAttribute()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(448): Illuminate\\Validation\\Validator->passes()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(490): Illuminate\\Validation\\Validator->fails()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Providers/FoundationServiceProvider.php(123): Illuminate\\Validation\\Validator->validate()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Macroable/Traits/Macroable.php(124): Illuminate\\Http\\Request->Illuminate\\Foundation\\Providers\\{closure}()
+#18 /var/www/html/app/Http/Controllers/UserController.php(19): Illuminate\\Http\\Request->__call()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\UserController->register()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(43): Illuminate\\Routing\\Controller->callAction()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(260): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(725): Illuminate\\Routing\\Route->run()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(126): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(102): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(54): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(726): Illuminate\\Pipeline\\Pipeline->then()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(703): Illuminate\\Routing\\Router->runRouteWithinStack()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(667): Illuminate\\Routing\\Router->runRoute()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(656): Illuminate\\Routing\\Router->dispatchToRoute()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(190): Illuminate\\Routing\\Router->dispatch()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#44 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#45 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#46 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#47 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#48 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#49 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#50 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#51 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#52 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#53 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then()
+#54 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#55 /var/www/html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#56 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
+#57 {main}
+"} 
+[2023-02-21 21:15:07] local.ERROR: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "users" does not exist
+LINE 1: select count(*) as aggregate from "users" where "email" = $1
+                                          ^ (SQL: select count(*) as aggregate from "users" where "email" = victor@gmail.com) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42P01): SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"users\" does not exist
+LINE 1: select count(*) as aggregate from \"users\" where \"email\" = $1
+                                          ^ (SQL: select count(*) as aggregate from \"users\" where \"email\" = victor@gmail.com) at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:760)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(422): Illuminate\\Database\\Connection->run()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2650): Illuminate\\Database\\Connection->select()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2638): Illuminate\\Database\\Query\\Builder->runSelect()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3174): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2639): Illuminate\\Database\\Query\\Builder->onceWithColumns()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3101): Illuminate\\Database\\Query\\Builder->get()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3029): Illuminate\\Database\\Query\\Builder->aggregate()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/DatabasePresenceVerifier.php(54): Illuminate\\Database\\Query\\Builder->count()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Concerns/ValidatesAttributes.php(863): Illuminate\\Validation\\DatabasePresenceVerifier->getCount()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(611): Illuminate\\Validation\\Validator->validateUnique()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(417): Illuminate\\Validation\\Validator->validateAttribute()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(448): Illuminate\\Validation\\Validator->passes()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(490): Illuminate\\Validation\\Validator->fails()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Providers/FoundationServiceProvider.php(123): Illuminate\\Validation\\Validator->validate()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/Macroable/Traits/Macroable.php(124): Illuminate\\Http\\Request->Illuminate\\Foundation\\Providers\\{closure}()
+#16 /var/www/html/app/Http/Controllers/UserController.php(19): Illuminate\\Http\\Request->__call()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\UserController->register()
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(43): Illuminate\\Routing\\Controller->callAction()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(260): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(725): Illuminate\\Routing\\Route->run()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(126): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(102): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(54): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(726): Illuminate\\Pipeline\\Pipeline->then()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(703): Illuminate\\Routing\\Router->runRouteWithinStack()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(667): Illuminate\\Routing\\Router->runRoute()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(656): Illuminate\\Routing\\Router->dispatchToRoute()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(190): Illuminate\\Routing\\Router->dispatch()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#42 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#44 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#45 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#46 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#47 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#48 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#49 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#50 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#51 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then()
+#52 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#53 /var/www/html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#54 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
+#55 {main}
+
+[previous exception] [object] (PDOException(code: 42P01): SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"users\" does not exist
+LINE 1: select count(*) as aggregate from \"users\" where \"email\" = $1
+                                          ^ at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:419)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(419): PDOStatement->execute()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(753): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(422): Illuminate\\Database\\Connection->run()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2650): Illuminate\\Database\\Connection->select()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2638): Illuminate\\Database\\Query\\Builder->runSelect()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3174): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2639): Illuminate\\Database\\Query\\Builder->onceWithColumns()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3101): Illuminate\\Database\\Query\\Builder->get()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3029): Illuminate\\Database\\Query\\Builder->aggregate()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/DatabasePresenceVerifier.php(54): Illuminate\\Database\\Query\\Builder->count()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Concerns/ValidatesAttributes.php(863): Illuminate\\Validation\\DatabasePresenceVerifier->getCount()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(611): Illuminate\\Validation\\Validator->validateUnique()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(417): Illuminate\\Validation\\Validator->validateAttribute()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(448): Illuminate\\Validation\\Validator->passes()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/Validation/Validator.php(490): Illuminate\\Validation\\Validator->fails()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Providers/FoundationServiceProvider.php(123): Illuminate\\Validation\\Validator->validate()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Macroable/Traits/Macroable.php(124): Illuminate\\Http\\Request->Illuminate\\Foundation\\Providers\\{closure}()
+#18 /var/www/html/app/Http/Controllers/UserController.php(19): Illuminate\\Http\\Request->__call()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\UserController->register()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(43): Illuminate\\Routing\\Controller->callAction()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(260): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(725): Illuminate\\Routing\\Route->run()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(126): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(102): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(54): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(726): Illuminate\\Pipeline\\Pipeline->then()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(703): Illuminate\\Routing\\Router->runRouteWithinStack()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(667): Illuminate\\Routing\\Router->runRoute()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(656): Illuminate\\Routing\\Router->dispatchToRoute()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(190): Illuminate\\Routing\\Router->dispatch()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#44 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#45 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#46 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#47 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#48 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#49 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#50 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#51 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#52 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#53 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then()
+#54 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#55 /var/www/html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#56 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
+#57 {main}
+"} 
+[2023-02-21 21:15:54] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"23"}  
+[2023-02-21 21:16:00] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-02-21 21:18:08] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-02-21 21:18:42] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-02-21 21:18:46] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123l"}  
+[2023-02-22 03:20:37] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-02-22 03:21:28] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-02-22 03:22:50] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-02-22 07:46:07] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-02-22 08:24:14] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-02-22 09:11:49] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"12e"}  
+[2023-02-22 09:11:52] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-02-22 11:00:49] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-02-22 11:13:18] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-02-23 23:16:30] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-02-23 23:28:40] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"traker2"}  
+[2023-02-23 23:28:55] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-02-24 00:02:37] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-15 18:46:53] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:23:18] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"12"}  
+[2023-03-16 00:23:29] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:23:50] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:24:57] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:26:47] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:27:03] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:29:28] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:29:55] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:33:30] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:33:37] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:37:36] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:38:53] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:39:14] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:43:20] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:48:50] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:49:06] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:55:08] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:55:32] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:55:40] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 00:58:30] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:00:40] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:03:10] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:03:13] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:06:55] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:17:08] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:17:19] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:17:43] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:21:32] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:21:37] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:21:44] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:21:45] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:22:04] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:22:06] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:29:43] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:29:50] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:29:58] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:30:28] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"113"}  
+[2023-03-16 01:30:32] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:30:35] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-03-16 01:30:36] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-04-12 22:53:17] local.ERROR: Command "cache" is not defined.
+
+Did you mean one of these?
+    cache:clear
+    cache:forget
+    cache:table
+    config:cache
+    event:cache
+    route:cache
+    schedule:clear-cache
+    view:cache {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"cache\" is not defined.
+
+Did you mean one of these?
+    cache:clear
+    cache:forget
+    cache:table
+    config:cache
+    event:cache
+    route:cache
+    schedule:clear-cache
+    view:cache at /var/www/html/vendor/symfony/console/Application.php:692)
+[stacktrace]
+#0 /var/www/html/vendor/symfony/console/Application.php(259): Symfony\\Component\\Console\\Application->find()
+#1 /var/www/html/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Application.php(102): Symfony\\Component\\Console\\Application->run()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(155): Illuminate\\Console\\Application->run()
+#4 /var/www/html/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 {main}
+"} 
+[2023-04-13 13:16:15] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-04-13 13:20:03] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-04-13 13:41:25] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-04-13 13:43:21] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-04-13 18:25:59] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-04-13 18:26:00] local.ERROR: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "users" does not exist
+LINE 1: select * from "users" where "email" = $1 limit 1
+                      ^ (SQL: select * from "users" where "email" = victor@gmail.com limit 1) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42P01): SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"users\" does not exist
+LINE 1: select * from \"users\" where \"email\" = $1 limit 1
+                      ^ (SQL: select * from \"users\" where \"email\" = victor@gmail.com limit 1) at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:760)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(422): Illuminate\\Database\\Connection->run()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2650): Illuminate\\Database\\Connection->select()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2638): Illuminate\\Database\\Query\\Builder->runSelect()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3174): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2639): Illuminate\\Database\\Query\\Builder->onceWithColumns()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(700): Illuminate\\Database\\Query\\Builder->get()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(684): Illuminate\\Database\\Eloquent\\Builder->getModels()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php(296): Illuminate\\Database\\Eloquent\\Builder->get()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Auth/EloquentUserProvider.php(140): Illuminate\\Database\\Eloquent\\Builder->first()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Auth/SessionGuard.php(381): Illuminate\\Auth\\EloquentUserProvider->retrieveByCredentials()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Auth/AuthManager.php(336): Illuminate\\Auth\\SessionGuard->attempt()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(338): Illuminate\\Auth\\AuthManager->__call()
+#13 /var/www/html/app/Http/Controllers/UserController.php(54): Illuminate\\Support\\Facades\\Facade::__callStatic()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\UserController->login()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(43): Illuminate\\Routing\\Controller->callAction()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(260): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(725): Illuminate\\Routing\\Route->run()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(126): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(102): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(54): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(726): Illuminate\\Pipeline\\Pipeline->then()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(703): Illuminate\\Routing\\Router->runRouteWithinStack()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(667): Illuminate\\Routing\\Router->runRoute()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(656): Illuminate\\Routing\\Router->dispatchToRoute()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(190): Illuminate\\Routing\\Router->dispatch()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#44 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#45 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#46 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#47 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#48 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then()
+#49 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#50 /var/www/html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#51 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
+#52 {main}
+
+[previous exception] [object] (PDOException(code: 42P01): SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"users\" does not exist
+LINE 1: select * from \"users\" where \"email\" = $1 limit 1
+                      ^ at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:419)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(419): PDOStatement->execute()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(753): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(422): Illuminate\\Database\\Connection->run()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2650): Illuminate\\Database\\Connection->select()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2638): Illuminate\\Database\\Query\\Builder->runSelect()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3174): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2639): Illuminate\\Database\\Query\\Builder->onceWithColumns()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(700): Illuminate\\Database\\Query\\Builder->get()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(684): Illuminate\\Database\\Eloquent\\Builder->getModels()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php(296): Illuminate\\Database\\Eloquent\\Builder->get()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Auth/EloquentUserProvider.php(140): Illuminate\\Database\\Eloquent\\Builder->first()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Auth/SessionGuard.php(381): Illuminate\\Auth\\EloquentUserProvider->retrieveByCredentials()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Auth/AuthManager.php(336): Illuminate\\Auth\\SessionGuard->attempt()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(338): Illuminate\\Auth\\AuthManager->__call()
+#15 /var/www/html/app/Http/Controllers/UserController.php(54): Illuminate\\Support\\Facades\\Facade::__callStatic()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\UserController->login()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(43): Illuminate\\Routing\\Controller->callAction()
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(260): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(725): Illuminate\\Routing\\Route->run()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(126): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(102): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(54): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(726): Illuminate\\Pipeline\\Pipeline->then()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(703): Illuminate\\Routing\\Router->runRouteWithinStack()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(667): Illuminate\\Routing\\Router->runRoute()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(656): Illuminate\\Routing\\Router->dispatchToRoute()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(190): Illuminate\\Routing\\Router->dispatch()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#44 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#45 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#46 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#47 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#48 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#49 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#50 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then()
+#51 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#52 /var/www/html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#53 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
+#54 {main}
+"} 
+[2023-04-13 18:29:09] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-04-13 18:29:47] local.DEBUG: credenciais {"email":"victorbuquera@gmail.com","password":"22"}  
+[2023-04-13 18:30:10] local.DEBUG: credenciais {"email":"victorbuquera@gmail.com","password":"123"}  
+[2023-04-13 18:30:26] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-04-13 18:31:38] local.DEBUG: credenciais {"email":"victor@gmail.com","password":"123"}  
+[2023-04-13 18:40:43] local.ERROR: Command "make" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:test {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make\" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:test at /var/www/html/vendor/symfony/console/Application.php:692)
+[stacktrace]
+#0 /var/www/html/vendor/symfony/console/Application.php(259): Symfony\\Component\\Console\\Application->find()
+#1 /var/www/html/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Application.php(102): Symfony\\Component\\Console\\Application->run()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(155): Illuminate\\Console\\Application->run()
+#4 /var/www/html/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 {main}
+"} 
+[2023-04-13 18:54:24] local.ERROR: Not enough arguments (missing: "name"). {"exception":"[object] (Symfony\\Component\\Console\\Exception\\RuntimeException(code: 0): Not enough arguments (missing: \"name\"). at /var/www/html/vendor/symfony/console/Input/Input.php:76)
+[stacktrace]
+#0 /var/www/html/vendor/symfony/console/Command/Command.php(303): Symfony\\Component\\Console\\Input\\Input->validate()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(126): Symfony\\Component\\Console\\Command\\Command->run()
+#2 /var/www/html/vendor/symfony/console/Application.php(1002): Illuminate\\Console\\Command->run()
+#3 /var/www/html/vendor/symfony/console/Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand()
+#4 /var/www/html/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Application.php(102): Symfony\\Component\\Console\\Application->run()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(155): Illuminate\\Console\\Application->run()
+#7 /var/www/html/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#8 {main}
+"} 
+[2023-04-13 19:00:41] local.ERROR: Not enough arguments (missing: "name"). {"exception":"[object] (Symfony\\Component\\Console\\Exception\\RuntimeException(code: 0): Not enough arguments (missing: \"name\"). at /var/www/html/vendor/symfony/console/Input/Input.php:76)
+[stacktrace]
+#0 /var/www/html/vendor/symfony/console/Command/Command.php(303): Symfony\\Component\\Console\\Input\\Input->validate()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(126): Symfony\\Component\\Console\\Command\\Command->run()
+#2 /var/www/html/vendor/symfony/console/Application.php(1002): Illuminate\\Console\\Command->run()
+#3 /var/www/html/vendor/symfony/console/Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand()
+#4 /var/www/html/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Application.php(102): Symfony\\Component\\Console\\Application->run()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(155): Illuminate\\Console\\Application->run()
+#7 /var/www/html/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#8 {main}
+"} 
+[2023-04-13 19:17:03] local.ERROR: SQLSTATE[42P07]: Duplicate table: 7 ERROR:  relation "talhoes" already exists (SQL: create table "talhoes" ("id" bigserial primary key not null, "nome" varchar(255) not null, "area" double precision not null, "coordenadas" varchar(255) not null, "fazenda_id" bigint not null, "created_at" timestamp(0) without time zone null, "updated_at" timestamp(0) without time zone null)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42P07): SQLSTATE[42P07]: Duplicate table: 7 ERROR:  relation \"talhoes\" already exists (SQL: create table \"talhoes\" (\"id\" bigserial primary key not null, \"nome\" varchar(255) not null, \"area\" double precision not null, \"coordenadas\" varchar(255) not null, \"fazenda_id\" bigint not null, \"created_at\" timestamp(0) without time zone null, \"updated_at\" timestamp(0) without time zone null)) at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:760)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(546): Illuminate\\Database\\Connection->run()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(109): Illuminate\\Database\\Connection->statement()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(404): Illuminate\\Database\\Schema\\Blueprint->build()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(267): Illuminate\\Database\\Schema\\Builder->build()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(338): Illuminate\\Database\\Schema\\Builder->create()
+#6 /var/www/html/database/migrations/2023_04_13_191038_create_talhoes_table.php(24): Illuminate\\Support\\Facades\\Facade::__callStatic()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(482): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(400): Illuminate\\Database\\Migrations\\Migrator->runMethod()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php(30): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(408): Illuminate\\Database\\Connection->transaction()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(210): Illuminate\\Database\\Migrations\\Migrator->runMigration()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(36): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(740): Illuminate\\Console\\View\\Components\\Task->render()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(210): Illuminate\\Database\\Migrations\\Migrator->write()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(175): Illuminate\\Database\\Migrations\\Migrator->runUp()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(118): Illuminate\\Database\\Migrations\\Migrator->runPending()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run()
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(616): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(102): Illuminate\\Database\\Migrations\\Migrator->usingConnection()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(651): Illuminate\\Container\\BoundMethod::call()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(144): Illuminate\\Container\\Container->call()
+#26 /var/www/html/vendor/symfony/console/Command/Command.php(308): Illuminate\\Console\\Command->execute()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(126): Symfony\\Component\\Console\\Command\\Command->run()
+#28 /var/www/html/vendor/symfony/console/Application.php(1002): Illuminate\\Console\\Command->run()
+#29 /var/www/html/vendor/symfony/console/Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand()
+#30 /var/www/html/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Application.php(102): Symfony\\Component\\Console\\Application->run()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(155): Illuminate\\Console\\Application->run()
+#33 /var/www/html/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#34 {main}
+
+[previous exception] [object] (PDOException(code: 42P07): SQLSTATE[42P07]: Duplicate table: 7 ERROR:  relation \"talhoes\" already exists at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:545)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(545): PDOStatement->execute()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(753): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(546): Illuminate\\Database\\Connection->run()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(109): Illuminate\\Database\\Connection->statement()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(404): Illuminate\\Database\\Schema\\Blueprint->build()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(267): Illuminate\\Database\\Schema\\Builder->build()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(338): Illuminate\\Database\\Schema\\Builder->create()
+#8 /var/www/html/database/migrations/2023_04_13_191038_create_talhoes_table.php(24): Illuminate\\Support\\Facades\\Facade::__callStatic()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(482): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(400): Illuminate\\Database\\Migrations\\Migrator->runMethod()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php(30): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(408): Illuminate\\Database\\Connection->transaction()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(210): Illuminate\\Database\\Migrations\\Migrator->runMigration()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(36): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(740): Illuminate\\Console\\View\\Components\\Task->render()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(210): Illuminate\\Database\\Migrations\\Migrator->write()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(175): Illuminate\\Database\\Migrations\\Migrator->runUp()
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(118): Illuminate\\Database\\Migrations\\Migrator->runPending()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(616): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(102): Illuminate\\Database\\Migrations\\Migrator->usingConnection()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(651): Illuminate\\Container\\BoundMethod::call()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(144): Illuminate\\Container\\Container->call()
+#28 /var/www/html/vendor/symfony/console/Command/Command.php(308): Illuminate\\Console\\Command->execute()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(126): Symfony\\Component\\Console\\Command\\Command->run()
+#30 /var/www/html/vendor/symfony/console/Application.php(1002): Illuminate\\Console\\Command->run()
+#31 /var/www/html/vendor/symfony/console/Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand()
+#32 /var/www/html/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Application.php(102): Symfony\\Component\\Console\\Application->run()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(155): Illuminate\\Console\\Application->run()
+#35 /var/www/html/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#36 {main}
+"} 
+[2023-04-13 19:17:45] local.ERROR: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "fazendas" does not exist (SQL: alter table "talhoes" add constraint "talhoes_fazenda_id_foreign" foreign key ("fazenda_id") references "fazendas" ("id") on delete cascade) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42P01): SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"fazendas\" does not exist (SQL: alter table \"talhoes\" add constraint \"talhoes_fazenda_id_foreign\" foreign key (\"fazenda_id\") references \"fazendas\" (\"id\") on delete cascade) at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:760)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(546): Illuminate\\Database\\Connection->run()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(109): Illuminate\\Database\\Connection->statement()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(404): Illuminate\\Database\\Schema\\Blueprint->build()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(267): Illuminate\\Database\\Schema\\Builder->build()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(338): Illuminate\\Database\\Schema\\Builder->create()
+#6 /var/www/html/database/migrations/2023_04_13_191038_create_talhoes_table.php(24): Illuminate\\Support\\Facades\\Facade::__callStatic()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(482): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(400): Illuminate\\Database\\Migrations\\Migrator->runMethod()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php(30): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(408): Illuminate\\Database\\Connection->transaction()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(210): Illuminate\\Database\\Migrations\\Migrator->runMigration()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(36): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(740): Illuminate\\Console\\View\\Components\\Task->render()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(210): Illuminate\\Database\\Migrations\\Migrator->write()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(175): Illuminate\\Database\\Migrations\\Migrator->runUp()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(118): Illuminate\\Database\\Migrations\\Migrator->runPending()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run()
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(616): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(102): Illuminate\\Database\\Migrations\\Migrator->usingConnection()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(651): Illuminate\\Container\\BoundMethod::call()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(144): Illuminate\\Container\\Container->call()
+#26 /var/www/html/vendor/symfony/console/Command/Command.php(308): Illuminate\\Console\\Command->execute()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(126): Symfony\\Component\\Console\\Command\\Command->run()
+#28 /var/www/html/vendor/symfony/console/Application.php(1002): Illuminate\\Console\\Command->run()
+#29 /var/www/html/vendor/symfony/console/Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand()
+#30 /var/www/html/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Application.php(102): Symfony\\Component\\Console\\Application->run()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(155): Illuminate\\Console\\Application->run()
+#33 /var/www/html/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#34 {main}
+
+[previous exception] [object] (PDOException(code: 42P01): SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"fazendas\" does not exist at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:545)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(545): PDOStatement->execute()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(753): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(546): Illuminate\\Database\\Connection->run()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(109): Illuminate\\Database\\Connection->statement()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(404): Illuminate\\Database\\Schema\\Blueprint->build()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(267): Illuminate\\Database\\Schema\\Builder->build()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(338): Illuminate\\Database\\Schema\\Builder->create()
+#8 /var/www/html/database/migrations/2023_04_13_191038_create_talhoes_table.php(24): Illuminate\\Support\\Facades\\Facade::__callStatic()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(482): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(400): Illuminate\\Database\\Migrations\\Migrator->runMethod()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php(30): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(408): Illuminate\\Database\\Connection->transaction()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(210): Illuminate\\Database\\Migrations\\Migrator->runMigration()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(36): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(740): Illuminate\\Console\\View\\Components\\Task->render()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(210): Illuminate\\Database\\Migrations\\Migrator->write()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(175): Illuminate\\Database\\Migrations\\Migrator->runUp()
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(118): Illuminate\\Database\\Migrations\\Migrator->runPending()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(616): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(102): Illuminate\\Database\\Migrations\\Migrator->usingConnection()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(651): Illuminate\\Container\\BoundMethod::call()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(144): Illuminate\\Container\\Container->call()
+#28 /var/www/html/vendor/symfony/console/Command/Command.php(308): Illuminate\\Console\\Command->execute()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(126): Symfony\\Component\\Console\\Command\\Command->run()
+#30 /var/www/html/vendor/symfony/console/Application.php(1002): Illuminate\\Console\\Command->run()
+#31 /var/www/html/vendor/symfony/console/Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand()
+#32 /var/www/html/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Application.php(102): Symfony\\Component\\Console\\Application->run()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(155): Illuminate\\Console\\Application->run()
+#35 /var/www/html/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#36 {main}
+"} 
+[2023-04-13 19:18:56] local.ERROR: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "fazendas" does not exist (SQL: alter table "talhoes" add constraint "talhoes_fazenda_id_foreign" foreign key ("fazenda_id") references "fazendas" ("id") on delete cascade) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42P01): SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"fazendas\" does not exist (SQL: alter table \"talhoes\" add constraint \"talhoes_fazenda_id_foreign\" foreign key (\"fazenda_id\") references \"fazendas\" (\"id\") on delete cascade) at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:760)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(546): Illuminate\\Database\\Connection->run()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(109): Illuminate\\Database\\Connection->statement()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(404): Illuminate\\Database\\Schema\\Blueprint->build()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(267): Illuminate\\Database\\Schema\\Builder->build()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(338): Illuminate\\Database\\Schema\\Builder->create()
+#6 /var/www/html/database/migrations/2023_04_13_191038_create_talhoes_table.php(24): Illuminate\\Support\\Facades\\Facade::__callStatic()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(482): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(400): Illuminate\\Database\\Migrations\\Migrator->runMethod()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php(30): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(408): Illuminate\\Database\\Connection->transaction()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(210): Illuminate\\Database\\Migrations\\Migrator->runMigration()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(36): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(740): Illuminate\\Console\\View\\Components\\Task->render()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(210): Illuminate\\Database\\Migrations\\Migrator->write()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(175): Illuminate\\Database\\Migrations\\Migrator->runUp()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(118): Illuminate\\Database\\Migrations\\Migrator->runPending()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run()
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(616): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(102): Illuminate\\Database\\Migrations\\Migrator->usingConnection()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(651): Illuminate\\Container\\BoundMethod::call()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(144): Illuminate\\Container\\Container->call()
+#26 /var/www/html/vendor/symfony/console/Command/Command.php(308): Illuminate\\Console\\Command->execute()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(126): Symfony\\Component\\Console\\Command\\Command->run()
+#28 /var/www/html/vendor/symfony/console/Application.php(1002): Illuminate\\Console\\Command->run()
+#29 /var/www/html/vendor/symfony/console/Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand()
+#30 /var/www/html/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Application.php(102): Symfony\\Component\\Console\\Application->run()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(155): Illuminate\\Console\\Application->run()
+#33 /var/www/html/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#34 {main}
+
+[previous exception] [object] (PDOException(code: 42P01): SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"fazendas\" does not exist at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:545)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(545): PDOStatement->execute()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(753): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(546): Illuminate\\Database\\Connection->run()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(109): Illuminate\\Database\\Connection->statement()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(404): Illuminate\\Database\\Schema\\Blueprint->build()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(267): Illuminate\\Database\\Schema\\Builder->build()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(338): Illuminate\\Database\\Schema\\Builder->create()
+#8 /var/www/html/database/migrations/2023_04_13_191038_create_talhoes_table.php(24): Illuminate\\Support\\Facades\\Facade::__callStatic()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(482): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(400): Illuminate\\Database\\Migrations\\Migrator->runMethod()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php(30): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(408): Illuminate\\Database\\Connection->transaction()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(210): Illuminate\\Database\\Migrations\\Migrator->runMigration()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(36): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(740): Illuminate\\Console\\View\\Components\\Task->render()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(210): Illuminate\\Database\\Migrations\\Migrator->write()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(175): Illuminate\\Database\\Migrations\\Migrator->runUp()
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(118): Illuminate\\Database\\Migrations\\Migrator->runPending()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(616): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(102): Illuminate\\Database\\Migrations\\Migrator->usingConnection()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(651): Illuminate\\Container\\BoundMethod::call()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(144): Illuminate\\Container\\Container->call()
+#28 /var/www/html/vendor/symfony/console/Command/Command.php(308): Illuminate\\Console\\Command->execute()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(126): Symfony\\Component\\Console\\Command\\Command->run()
+#30 /var/www/html/vendor/symfony/console/Application.php(1002): Illuminate\\Console\\Command->run()
+#31 /var/www/html/vendor/symfony/console/Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand()
+#32 /var/www/html/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Application.php(102): Symfony\\Component\\Console\\Application->run()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(155): Illuminate\\Console\\Application->run()
+#35 /var/www/html/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#36 {main}
+"} 

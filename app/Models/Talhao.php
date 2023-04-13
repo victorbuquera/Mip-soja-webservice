@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Talhao extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'nome',
         'area',
-        'localizacao',
         'coordenadas',
+        'fazenda_id',
     ];
 
     public function fazenda()
